@@ -1,11 +1,11 @@
 :- include('kb.pl').
-:- discontiguous state/3.
+:- discontiguous ironman/3.
 :- discontiguous stone/2.
 :- discontiguous thanos/3.
 
-state(X1,Y1,R1,result(A,S)):-
-    state(X,Y,R,S),
-    dimension(M,N),
+ironman(X1,Y1,R1,result(A,S)):-
+    ironman(X,Y,R,S),
+    grid(M,N),
     (
         (
             (
@@ -21,7 +21,7 @@ state(X1,Y1,R1,result(A,S)):-
         );
         (
             (
-                (A = snap, thanos(X,Y), length(R,0), R1 = R);
+                (A = snap, thanos(X,Y), R1 = R);
                 (
                     (A = left, Y > 0, Y1 is Y - 1, X1 is X, R1 = R);
                     (A = right, X1 is X, Y1 is Y + 1, Y1 < M), R1 = R;
@@ -35,7 +35,7 @@ state(X1,Y1,R1,result(A,S)):-
 
 snapped(S):-
     S = result(snap,_),
-    state(_,_,_,S).
+    ironman(_,_,_,S).
     
     
 query_with_depth(S,N,L):-
