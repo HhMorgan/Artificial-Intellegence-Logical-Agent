@@ -12,9 +12,9 @@ ironman(X1,Y1,R1,result(A,S)):-
                 (A = collect, member(stone(X,Y), R), delete(R, stone(X,Y), R1), X1 is X, Y1 is Y);
                 (
                     (A = left, Y > 0, Y1 is Y - 1, X1 is X, R1 = R);
-                    (A = right, X1 is X, Y1 is Y + 1, Y1 < M, R1 = R);
+                    (A = right, X1 is X, Y1 is Y + 1, Y1 < N, R1 = R);
                     (A = up, X > 0, X1 is X - 1, Y1 is Y, R1 = R);
-                    (A = down, Y1 is Y, X1 is X + 1, X1 < N, R1 = R)
+                    (A = down, Y1 is Y, X1 is X + 1, X1 < M, R1 = R)
                 )
             ),
             \+ thanos(X1,Y1)
@@ -24,9 +24,9 @@ ironman(X1,Y1,R1,result(A,S)):-
                 (A = snap, thanos(X,Y), R1 = R);
                 (
                     (A = left, Y > 0, Y1 is Y - 1, X1 is X, R1 = R);
-                    (A = right, X1 is X, Y1 is Y + 1, Y1 < M), R1 = R;
+                    (A = right, X1 is X, Y1 is Y + 1, Y1 < N, R1 = R);
                     (A = up, X > 0, X1 is X - 1, Y1 is Y, R1 = R);
-                    (A = down, Y1 is Y, X1 is X + 1, X1 < N, R1 = R)
+                    (A = down, Y1 is Y, X1 is X + 1, X1 < M, R1 = R)
                 )
             ),
             length(R,0)
