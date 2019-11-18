@@ -4,6 +4,7 @@
 :- discontiguous thanos/3.
 
 /*The representation of the agent's location at some situation*/
+/*ironman/4, The x cooridinates of Iron Man, The y cooridinates of Iron Man, The stones left in the grid in situation S, The situation sequence of the agent in the world.*/
 ironman(X1,Y1,R1,result(A,S)):-
     ironman(X,Y,R,S),
     grid(M,N),
@@ -41,6 +42,7 @@ ironman(X1,Y1,R1,result(A,S)):-
     ).
 
 /*The goal of the stated problem is queried on in the snapped predicate, where the situation wanted is the one that has the action snap at the head of the situational statement in the ironman predicate*/
+/*snapped/1, The situation sequence represented in the successor notation that states the actions taken by the agent to reach the goal stated*/
 snapped(S):-
     S = result(snap,_),
     ironman(_,_,_,S).
